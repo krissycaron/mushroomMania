@@ -4,3 +4,7 @@ console.log("main js connected")
 //    firebase.initializeApp(FIREBASE_CONFIG);
 // });
 
+app.controller("itemControl", ()=>{
+	console.log("in item control")
+	
+})
