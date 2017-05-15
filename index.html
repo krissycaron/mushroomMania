@@ -5,22 +5,54 @@
 	<link rel="stylesheet" type="text/css" href="./lib/bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./styles/main.css">
 </head>
+
+<!-- BEGIN -->
 <body ng-app="mushMan">
-<div ng-controller="itemControl">
-	<div class="row">
-		<div class="container">
-			<input type="radio" name="poison">Poisonous
-			<input type="radio" name="not-poison">Non-Poisonous
-		</div>
-	</div>
-</div>
+<!-- NAV BAR  -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	      </button>
+	      <a class="navbar-brand" href="#">Fun With Fungus</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <form class="navbar-form navbar-left">
+	        
+	        <button type="submit" class="btn btn-default">Filter</button>
+	      </form>
+	      <ul class="nav navbar-nav navbar-right">
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
 
 
+<!-- Start DOM BODY -->
+  <div ng-controller="mushroomCtrl">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+       <div class="form-group">
+	    	<input type="radio" name="mushType" value="0">Poisonous
+			<input type="radio" name="mushType" value="1">Non-Poisonous
+	    </div>
+      </div>
+    </div>
+
+
+
+
+<!-- Scripts-->
+
+<!-- THIRD PARTY SCRIPTS -->
 	<script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
 
-
+<!-- My SCRIPTS -->
 	<script type="text/javascript" src="./javascripts/app.js"></script>
 	<script type="text/javascript" src="./javascripts/AppConstants.js"></script>
 	<script type="text/javascript" src="./javascripts/main.js"></script>
