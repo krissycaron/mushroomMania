@@ -5,16 +5,17 @@ app.run((FIREBASE_CONFIG) => {
 });
 
 app.controller("mushroomCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
-  let getItemList = () => {
-  let itemz = [];
+  let getMushList = () => {
+  $scope.items = [];
   
     return $q((resolve, reject) => {
+      let itemz = [];
       $http.get(`${FIREBASE_CONFIG.databaseURL}/mushrooms.json`)
       .then((fbItems)=> {
-        let itemCollection = fbItems.data;
-        Object.keys(itemCollection).forEach((key) => {
-            itemCollection[key].id=key;
-            itemz.push(itemCollection[key]);
+        let mushroomCollection = fbItems.data;
+        Object.keys(mushroomCollection).forEach((key) => {
+            mushroomCollection[key].id=key;
+            itemz.push(mushroomCollection[key]);
           });
           console.log("resultz", itemz);
           resolve(itemz);
@@ -25,15 +26,15 @@ app.controller("mushroomCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
     });
   };
 
-  let getItems = () => {
-      getItemList().then((itemz)=>{
+  let getMushrooms = () => {
+      getMushList().then((itemz)=>{
         $scope.items = itemz;
       }).catch((error)=>{
         console.log("got and error", error);
       });
     };
 
-  getItems();
+  getMushrooms();
 
 
 });
