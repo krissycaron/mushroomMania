@@ -13,39 +13,28 @@
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	      </button>
 	      <a class="navbar-brand" href="#">Fun With Fungus</a>
 	    </div>
 
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <form class="navbar-form navbar-left">
-	        
-	        <button type="submit" class="btn btn-default" ng-click="getMushrooms()">Filter</button>
-	      </form>
-	      <ul class="nav navbar-nav navbar-right">
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
 
-
-<!-- Start DOM BODY -->
+	<!-- Start DOM BODY -->
+	<!-- input div holder--> 
   <div ng-controller="mushroomCtrl">
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
        <div class="form-group">
        		<input type="text" name="userInput" placeholder="Type here ..." ng-model="searchText">
-	    	<input type="radio" name="mushType" value="0" ng-click="showMushrooms()">Poisonous
-			<input type="radio" name="mushType" value="1" ng-click="showMushrooms()">Non-Poisonous
+	    	<input type="radio" name="mushType" value="0" ng-value="false" ng-model="isEdible" ng-click="showMushrooms()">Poisonous
+			<input type="radio" name="mushType" value="1" ng-value="true" ng-model="isEdible" ng-click="showMushrooms()">Non-Poisonous
 	    </div>
-		    <div ng-show="showListView">
-		    	<div class="panel panel-default" ng-repeat="mushrooms in items | filter: searchText">
-				 	<div class="panel-heading">{{mushrooms.name}}</div>
-					<div class="panel-body">{{mushrooms.description}}</div>
-				</div>	
-	      	</div>
+
+	    <!-- Mushroom Cards Div --> 
+	    <div ng-show="!showListView">
+	    	<div class="panel panel-default" ng-repeat="mushrooms in items | filter: searchText | filter:isEdible">
+			 	<div class="panel-heading">{{mushrooms.name}}</div>
+				<div class="panel-body">{{mushrooms.description}}</div>
+			</div>	
+      	</div>
     	</div>
    	</div>
    </div>	

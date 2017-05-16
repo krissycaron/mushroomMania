@@ -4,6 +4,8 @@ app.run((FIREBASE_CONFIG) => {
     firebase.initializeApp(FIREBASE_CONFIG);
 });
 
+
+
 app.controller("mushroomCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
     let getMushList = () => {
         $scope.items = [];
@@ -39,8 +41,8 @@ app.controller("mushroomCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
     getMushrooms();
 
     $scope.showMushrooms = () => {
-        $scope.showListView
-        // $scope.showListView = true;
+        console.log("showMushrooms was clicked", true);
+        $scope.showListView=false;
     };
 
 
