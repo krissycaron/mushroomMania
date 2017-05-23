@@ -3,14 +3,56 @@
 <head>
 	<title>Mushroom Mania</title>
 	<link rel="stylesheet" type="text/css" href="./lib/bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./styles/main.css">
 </head>
-<body>
+
+<!-- BEGIN -->
+<body ng-app="mushMan">
+<!-- NAV BAR  -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Fun With Fungus</a>
+	    </div>
 
 
-<script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
-<script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
+	<!-- Start DOM BODY -->
+	<!-- input div holder--> 
+  <div ng-controller="mushroomCtrl">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+       <div class="form-group">
+       		<input type="text" name="userInput" placeholder="Type here ..." ng-model="searchText">
+	    	<input type="radio" name="mushType" value="0" ng-value="false" ng-model="isEdible" ng-click="showMushrooms()">Poisonous
+			<input type="radio" name="mushType" value="1" ng-value="true" ng-model="isEdible" ng-click="showMushrooms()">Non-Poisonous
+	    </div>
 
-<script type="text/javascript" src="./javascripts/main.js"></script>
+	    <!-- Mushroom Cards Div --> 
+	    <div ng-show="!showListView">
+	    	<div class="panel panel-default" ng-repeat="mushrooms in items | filter: searchText | filter:isEdible">
+			 	<div class="panel-heading">{{mushrooms.name}}</div>
+				<div class="panel-body">{{mushrooms.description}}</div>
+			</div>	
+      	</div>
+    	</div>
+   	</div>
+   </div>	
+
+
+
+
+<!-- Scripts-->
+
+<!-- THIRD PARTY SCRIPTS -->
+	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+	<script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
+
+<!-- My SCRIPTS -->
+	<script type="text/javascript" src="./javascripts/app.js"></script>
+	<script type="text/javascript" src="./javascripts/AppConstants.js"></script>
+	<script type="text/javascript" src="./javascripts/main.js"></script>
 </body>
 </html>
